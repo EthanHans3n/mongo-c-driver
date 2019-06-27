@@ -16,7 +16,6 @@ before_install:
   # "brew install" can succeed but return 1 if it has "caveats".
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install mongodb || true; fi
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew services start mongodb; fi
-  - sudo systemctl enable mongod
 
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
