@@ -19,8 +19,8 @@ before_install:
 
 before_script:
   #needed to avoid "mongod.service not found"
-  - sudo systemctl enable mongod
-  - sudo service mongod restart
+  - sudo systemctl enable mongodb
+  - sudo service mongodb restart
   # Add an IPv6 config - see the corresponding Travis issue
   # https://github.com/travis-ci/travis-ci/issues/8361
   - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
