@@ -18,6 +18,9 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew services start mongodb; fi
 
 before_script:
+  #needed to avoid "mongod.service not found"
+  - sudo systemctl enable mongod
+  - sudo service mongod restart
   # Add an IPv6 config - see the corresponding Travis issue
   # https://github.com/travis-ci/travis-ci/issues/8361
   - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
