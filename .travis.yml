@@ -20,8 +20,7 @@ before_install:
 before_script:
   # Add an IPv6 config - see the corresponding Travis issue
   # https://github.com/travis-ci/travis-ci/issues/8361
-  - if [ "${TRAVIS_OS_NAME}" == "linux" -o "${TRAVIS_OS_NAME}" == "linux-ppc64le" ]; then
-      echo $TRAVIS_OS_NAME;
+  - if [ "${TRAVIS_OS_NAME}" == "linux" ]; then
       sudo sh -c 'echo 0 > /proc/sys/net/ipv6/conf/all/disable_ipv6';
     fi
 
@@ -34,6 +33,7 @@ addons:
   apt:
     packages:
       - gdb
+      - mongodb
 
 script:
   - sudo sh -c 'echo "\n::1 localhost\n" >> /etc/hosts'
